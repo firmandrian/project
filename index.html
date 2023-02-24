@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" style="background-color: #eaeaea;">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Bootstrap demo</title>
+    <title>Leekie enterprises</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -12,8 +12,26 @@
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <img src="pic.gif" alt="" />
-    <nav class="navbar navbar-expand-lg border-bottom border-secondary" style="background-color: #b7bec4cc">
+    <div class="d-flex mb-3">
+      <div > <img src="pic.gif" alt="" /></div>
+      <span class="border-start"></span>
+      <div class="icons"><i class="bi bi-envelope"></i></div>
+      <span class="border-start ms-3"></span>
+      <div class="me-auto"></div>
+      <div class="d-flex align-items-end flex-column">
+        <div id="clock"></div>
+        <div id="tanggal"></div>
+      </div>
+      <span class="border-start ms-3"></span>
+      <div class="d-flex align-items-end flex-column">
+      <div id="welcome">Welcome Dummy Reguler</div>
+      <div id="logout"><i class="bi bi-box-arrow-right"></i> Log Out</div>
+    </div>
+    </div>
+   
+
+   <!-- awal navbar -->
+    <nav class="navbar navbar-expand-lg border-bottom border-secondary" style="background-color: #eaeaea">
       <div class="container-fluid p-1">
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
@@ -73,7 +91,9 @@
         </div>
       </div>
     </nav>
-    <div class="container-fluid py-3" style="background-color: #b7bec4cc">
+    <!-- akhir navbar -->
+
+    <div class="container-fluid py-3" style="background-color: #eaeaea">
       <div class="border border-primary bg-light">
         <div class="text-light" id="title">
           <p class="p-3">
@@ -85,12 +105,23 @@
           <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#addModal">Add</button>
           <button type="button" class="btn btn-danger">Delete</button>
 
-          <form class="row g-3 py-3">
+          <div class="row py-3">
+            <div class="col-md-4">
+              <form class="input-group">
+                <input type="text" class="form-control" id="validationDefault01" placeholder="Search..." required>
+              </form>
+            </div>
+            <div class="col-md-2 text-end" id="show-entries">
+              showing 10/10 entries
+            </div>
+          </div>
+          <!-- <form class="row g-3 py-3">
             <div class="col-md-4">
               <input type="text" class="form-control" id="validationDefault01" placeholder="Search..." required />
             </div>
-          </form>
+          </form> -->
 
+          <!-- awal table  -->
           <table class="table table-responsive table-bordered">
             <th></th>
             <th>Type incentive</th>
@@ -162,6 +193,8 @@
               <td>ISO Compilance Deductionr</td>
             </tr>
           </table>
+          <!-- akhir table  -->
+
           <div class="d-flex justify-content-between" aria-label="...">
             <div>
               <span>Show </span>
@@ -172,6 +205,7 @@
               <span>entries per page</span>
             </div>
 
+            <!-- awal pagination  -->
             <div>
               <ul class="pagination">
                 <li class="page-item px-1">
@@ -198,11 +232,12 @@
                 </li>
               </ul>
             </div>
+            <!-- akhir pagination  -->
           </div>
         </div>
       </div>
     </div>
-    <div style="background-color: #99a0a7e7"></div>
+    <div style="background-color: #eaeaea"></div>
 
     <!-- Modal -->
     <div class="modal fade" id="addModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -227,7 +262,7 @@
 
               <div class="col-8">
                 <select id="disabledSelect" class="form-select">
-                  <option>Disabled select</option>
+                  <option>Disabled select2</option>
                 </select>
               </div>
 
@@ -249,7 +284,7 @@
                 </label>
               </div>
 
-              <div class="col-8"><input type="number" class="form-control" id="exampleFormControlInput1" placeholder=00.00 " /></div>
+              <div class="col-8"><input type="number" class="form-control" id="exampleFormControlInput1" placeholder="00.00 " /></div>
             </form>
           </div>
           <div class="modal-footer">
@@ -260,6 +295,25 @@
       </div>
     </div>
 
+    <script>
+      function clock() {
+        var clockElement = document.getElementById('clock');
+        const currentTime = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', hour12: true });
+          clockElement.textContent = 'Time :' + new Date().toLocaleTimeString();
+      }
+      setInterval(clock, 1000);
+      
+      var date = new Date();
+      var year = date.getFullYear();
+      var month = date.getMonth();
+      var day = date.getDate();
+      var options = { month: 'long' };
+      var monthName = new Intl.DateTimeFormat('en-US', options).format(date);
+      var tanggal = "Date :" + ' '+ day + ' ' + monthName + ' ' + year;
+      document.getElementById('tanggal').innerHTML = tanggal;
+  </script>
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+
   </body>
 </html>
